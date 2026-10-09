@@ -53,7 +53,7 @@ a CLI built in.
 - **CLI** (`forgedata`): `forgedata generate person.fullName --seed 42`,
   `forgedata list --module internet --json`, and more.
 - **100% test coverage** (statements/branches/functions/lines), enforced in CI.
-- **Live demo site** at https://devsahinur.github.io/ForgeData/ — an
+- **Live demo site** at https://sahinurdev.github.io/ForgeData/ — an
   interactive playground that runs the real published package in-browser.
 
 ## Install
@@ -76,13 +76,13 @@ forge.person.fullName();
 forge.internet.email();
 ```
 
-See [README.md](./README.md) and the [documentation site](https://devsahinur.github.io/ForgeData/docs.html)
+See [README.md](./README.md) and the [documentation site](https://sahinurdev.github.io/ForgeData/docs.html)
 for the full guide, API reference, Zod guide, React guide, CLI reference, and
 migration notes from Faker.js.
 
 ## Links
 
 - npm: https://www.npmjs.com/package/@sahinur/forgedata
-- Website: https://devsahinur.github.io/ForgeData/
-- Docs: https://devsahinur.github.io/ForgeData/docs.html
+- Website: https://sahinurdev.github.io/ForgeData/
+- Docs: https://sahinurdev.github.io/ForgeData/docs.html
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)

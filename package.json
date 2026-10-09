@@ -119,11 +119,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devSahinur/ForgeData.git"
+    "url": "git+https://github.com/SahinurDEV/ForgeData.git"
   },
-  "homepage": "https://devsahinur.github.io/ForgeData/",
+  "homepage": "https://sahinurdev.github.io/ForgeData/",
   "bugs": {
-    "url": "https://github.com/devSahinur/ForgeData/issues"
+    "url": "https://github.com/SahinurDEV/ForgeData/issues"
   },
   "author": "ForgeData Contributors",
   "publishConfig": {

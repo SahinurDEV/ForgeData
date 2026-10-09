@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 From this point forward, entries in this file are generated automatically by
 [semantic-release](https://semantic-release.gitbook.io/) from
 [Conventional Commits](https://www.conventionalcommits.org/) on `main` — see
-`.releaserc.json` and the docs site's [Contributing](https://devsahinur.github.io/ForgeData/docs.html#contributing)
+`.releaserc.json` and the docs site's [Contributing](https://sahinurdev.github.io/ForgeData/docs.html#contributing)
 section. New entries are prepended above this line by CI; do not hand-edit past releases.
 
 ## [0.2.0] - 2026-07-09
@@ -66,6 +66,6 @@ itself is still the short `forgedata` regardless of package scope.
 - Zero runtime dependencies; only web-standard APIs (`btoa`, etc.) so the
   package runs unmodified on Node.js 18+, Bun, Deno, and in browsers.
 
-[0.2.0]: https://github.com/devSahinur/ForgeData/releases/tag/v0.2.0
-[0.1.1]: https://github.com/devSahinur/ForgeData/releases/tag/v0.1.1
-[0.1.0]: https://github.com/devSahinur/ForgeData/releases/tag/v0.1.0
+[0.2.0]: https://github.com/SahinurDEV/ForgeData/releases/tag/v0.2.0
+[0.1.1]: https://github.com/SahinurDEV/ForgeData/releases/tag/v0.1.1
+[0.1.0]: https://github.com/SahinurDEV/ForgeData/releases/tag/v0.1.0
