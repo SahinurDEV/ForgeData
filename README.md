@@ -318,7 +318,7 @@ npm publish --access public
 
 `scripts/publish.sh` wraps that sequence with a confirmation prompt, and `RELEASE_NOTES.md` has a ready-to-paste description for the GitHub Release / npm announcement.
 
-For every release after the first, `.github/workflows/release.yml` runs [semantic-release](https://semantic-release.gitbook.io/) on pushes to `main` — it derives the next version from [Conventional Commits](https://www.conventionalcommits.org/), updates `CHANGELOG.md`, tags, and publishes, but only once you add an `NPM_TOKEN` repository secret. Until then it's a no-op (see the docs site's [Contributing](https://sahinurdev.github.io/ForgeData/docs.html#contributing) section); it never requires a token to just sit there ready.
+For every release after the first, `.github/workflows/release.yml` runs [semantic-release](https://semantic-release.gitbook.io/) on pushes to `main` — it derives the next version from [Conventional Commits](https://www.conventionalcommits.org/), updates `CHANGELOG.md`, tags, and publishes to npm via [Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC, with provenance) — no `NPM_TOKEN` secret is needed. It requires a one-time trusted publisher for `@sahinur/forgedata` on npmjs.com (GitHub Actions, `SahinurDEV` / `ForgeData`, workflow `release.yml`); see the docs site's [Contributing](https://sahinurdev.github.io/ForgeData/docs.html#contributing) section.
 
 ## License
 
