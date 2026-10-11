@@ -13,10 +13,10 @@ a CLI built in.
 
 ## What's new in 0.2.0
 
-- **Zod schema generation** at the `@sahinur/forgedata/zod` subpath:
+- **Zod schema generation** at the `forgedata/zod` subpath:
   ```ts
   import { z } from "zod";
-  import { fromZodSchema } from "@sahinur/forgedata/zod";
+  import { fromZodSchema } from "forgedata/zod";
 
   const UserSchema = z.object({
     name: z.string(),
@@ -47,8 +47,8 @@ a CLI built in.
   plus a custom locale API.
 - **Custom generators** (`forge.define()`) and a **unique-value generator**
   (`forge.unique.email()`, etc.).
-- **Zod schema generation** at `@sahinur/forgedata/zod`: `fromZodSchema()`.
-- **React integration** at `@sahinur/forgedata/react`: `ForgeDataProvider`,
+- **Zod schema generation** at `forgedata/zod`: `fromZodSchema()`.
+- **React integration** at `forgedata/react`: `ForgeDataProvider`,
   `useForgeData()`, `useGenerator()`.
 - **CLI** (`forgedata`): `forgedata generate person.fullName --seed 42`,
   `forgedata list --module internet --json`, and more.
@@ -59,17 +59,16 @@ a CLI built in.
 ## Install
 
 ```bash
-npm install @sahinur/forgedata
+npm install forgedata
 ```
 
-Published under the `@sahinur` scope because npm's anti-typosquatting policy
-blocks the unscoped `forgedata` name (too similar to the popular `form-data`
-package). The CLI command is still just `forgedata`.
+Previously published as the scoped `@sahinur/forgedata` (up to v0.2.0); the
+package is now the unscoped `forgedata`. The CLI command is `forgedata`.
 
 ## Quick start
 
 ```ts
-import { ForgeData } from "@sahinur/forgedata";
+import { ForgeData } from "forgedata";
 
 const forge = new ForgeData({ seed: 42 });
 forge.person.fullName();
@@ -82,7 +81,7 @@ migration notes from Faker.js.
 
 ## Links
 
-- npm: https://www.npmjs.com/package/@sahinur/forgedata
+- npm: https://www.npmjs.com/package/forgedata
 - Website: https://sahinurdev.github.io/ForgeData/
 - Docs: https://sahinurdev.github.io/ForgeData/docs.html
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)

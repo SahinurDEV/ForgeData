@@ -30,7 +30,7 @@
           <a href="./docs.html#cli" class="nav-link">CLI</a>
           <a href="./docs.html#react" class="nav-link">React</a>
           <a href="https://github.com/SahinurDEV/ForgeData" class="nav-link">GitHub</a>
-          <a href="https://www.npmjs.com/package/@sahinur/forgedata" class="nav-link">npm</a>
+          <a href="https://www.npmjs.com/package/forgedata" class="nav-link">npm</a>
         </nav>
         <div class="flex items-center gap-3">
           <button
@@ -75,7 +75,7 @@
 
         <div class="mx-auto mt-6 max-w-lg">
           <div class="code-block flex items-center justify-between gap-4 text-left font-mono">
-            <code id="install-cmd">npm install @sahinur/forgedata</code>
+            <code id="install-cmd">npm install forgedata</code>
             <button
               id="copy-btn"
               type="button"
@@ -119,7 +119,7 @@
     <!-- Quick example -->
     <section class="mx-auto max-w-6xl px-6 pb-20">
       <div class="code-block mx-auto max-w-2xl font-mono" data-reveal>
-<pre><span class="text-fuchsia-400">import</span> { ForgeData } <span class="text-fuchsia-400">from</span> <span class="text-emerald-400">"@sahinur/forgedata"</span>;
+<pre><span class="text-fuchsia-400">import</span> { ForgeData } <span class="text-fuchsia-400">from</span> <span class="text-emerald-400">"forgedata"</span>;
 
 <span class="text-fuchsia-400">const</span> forge = <span class="text-fuchsia-400">new</span> ForgeData({ seed: <span class="text-amber-400">42</span> });
 
@@ -134,7 +134,7 @@ forge.ai.prompt();                <span class="text-slate-500">// "Explain quant
     <section class="mx-auto max-w-6xl px-6 pb-20" id="playground">
       <h2 class="text-center text-3xl font-bold">Try it live</h2>
       <p class="mx-auto mt-3 max-w-2xl text-center text-slate-600 dark:text-slate-400">
-        This runs the real, published <code>@sahinur/forgedata</code> package in your browser via
+        This runs the real, published <code>forgedata</code> package in your browser via
         <a href="https://esm.sh" class="underline">esm.sh</a> — nothing on this page is precomputed.
       </p>
 
@@ -292,7 +292,7 @@ forge.ai.prompt();                <span class="text-slate-500">// "Explain quant
             driftable list of commands.
           </p>
           <div class="code-block mt-6 font-mono text-sm">
-<pre><span class="text-slate-500"># npx --package=@sahinur/forgedata forgedata ...</span>
+<pre><span class="text-slate-500"># npx --package=forgedata forgedata ...</span>
 $ forgedata generate person.fullName --seed 42
 Donald Martinez
 
@@ -308,11 +308,11 @@ $ forgedata list --module color --json
         <div data-reveal>
           <h3 class="text-xl font-bold">From your React app</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
-            <code>@sahinur/forgedata/react</code> is a separate entry point — the main package never imports React.
+            <code>forgedata/react</code> is a separate entry point — the main package never imports React.
           </p>
           <div class="code-block mt-6 font-mono text-sm">
 <pre><span class="text-fuchsia-400">import</span> { ForgeDataProvider, useGenerator } <span class="text-fuchsia-400">from</span>
-  <span class="text-emerald-400">"@sahinur/forgedata/react"</span>;
+  <span class="text-emerald-400">"forgedata/react"</span>;
 
 <span class="text-fuchsia-400">function</span> UserCard() {
   <span class="text-fuchsia-400">const</span> user = useGenerator(
@@ -360,7 +360,7 @@ $ forgedata list --module color --json
         <h2 class="text-3xl font-bold">Ready to forge some data?</h2>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
           <a href="./docs.html" class="btn-primary">Read the docs</a>
-          <a href="https://www.npmjs.com/package/@sahinur/forgedata" class="btn-secondary">View on npm</a>
+          <a href="https://www.npmjs.com/package/forgedata" class="btn-secondary">View on npm</a>
         </div>
       </div>
     </section>
@@ -372,7 +372,7 @@ $ forgedata list --module color --json
         <div class="flex gap-6">
           <a href="./docs.html" class="hover:text-slate-900 dark:hover:text-white">Docs</a>
           <a href="https://github.com/SahinurDEV/ForgeData" class="hover:text-slate-900 dark:hover:text-white">GitHub</a>
-          <a href="https://www.npmjs.com/package/@sahinur/forgedata" class="hover:text-slate-900 dark:hover:text-white">npm</a>
+          <a href="https://www.npmjs.com/package/forgedata" class="hover:text-slate-900 dark:hover:text-white">npm</a>
         </div>
       </div>
     </footer>
@@ -386,7 +386,7 @@ $ forgedata list --module color --json
 
       const copyBtn = document.getElementById("copy-btn");
       copyBtn.addEventListener("click", async () => {
-        await navigator.clipboard.writeText("npm install @sahinur/forgedata");
+        await navigator.clipboard.writeText("npm install forgedata");
         copyBtn.textContent = "Copied!";
         setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
       });
@@ -451,7 +451,7 @@ $ forgedata list --module color --json
       // Unpinned on purpose: always resolves to whatever is currently
       // published on npm, so this playground never breaks when the version
       // here in the repo is ahead of what's actually live on the registry.
-      import { ForgeData } from "https://esm.sh/@sahinur/forgedata";
+      import { ForgeData } from "https://esm.sh/forgedata";
 
       const LOCALES = ["en", "bn", "hi", "ar", "ja", "fr", "de", "es", "zh"];
 
