@@ -22,7 +22,7 @@
           <a href="./index.html" class="nav-link">Home</a>
           <a href="./index.html#playground" class="nav-link">Playground</a>
           <a href="https://github.com/SahinurDEV/ForgeData" class="nav-link">GitHub</a>
-          <a href="https://www.npmjs.com/package/forgedata" class="nav-link">npm</a>
+          <a href="https://www.npmjs.com/package/forgedatajs" class="nav-link">npm</a>
         </nav>
         <div class="flex items-center gap-2">
           <button
@@ -124,8 +124,8 @@
         </div>
 
         <h2 id="getting-started">Getting Started</h2>
-        <pre><code>npm install forgedata</code></pre>
-        <pre><code>import { ForgeData } from "forgedata";
+        <pre><code>npm install forgedatajs</code></pre>
+        <pre><code>import { ForgeData } from "forgedatajs";
 
 const forge = new ForgeData();
 console.log(forge.person.fullName());
@@ -135,7 +135,7 @@ console.log(forge.internet.email());</code></pre>
           Each instance owns its own random stream, so seeding one never affects another. There's also
           a ready-made default instance for quick scripts:
         </p>
-        <pre><code>import { forge } from "forgedata";
+        <pre><code>import { forge } from "forgedatajs";
 console.log(forge.person.fullName());</code></pre>
 
         <h2 id="seeding">Deterministic Seeding</h2>
@@ -232,9 +232,9 @@ forge.invoke("person", "fullName"); // dynamic dispatch</code></pre>
         <p>Full method signatures live next to each implementation in <a href="https://github.com/SahinurDEV/ForgeData/tree/main/src"><code>src/&lt;module&gt;/index.ts</code></a> with JSDoc.</p>
 
         <h2 id="zod">Zod Schema Generation</h2>
-        <pre><code>npm install forgedata zod</code></pre>
+        <pre><code>npm install forgedatajs zod</code></pre>
         <pre><code>import { z } from "zod";
-import { fromZodSchema } from "forgedata/zod";
+import { fromZodSchema } from "forgedatajs/zod";
 
 const UserSchema = z.object({
   id: z.string().uuid(),
@@ -265,12 +265,12 @@ const user = fromZodSchema(forge, UserSchema);
           shape. Arbitrary <code>.refine()</code> predicates aren't evaluated ahead of time — a
           generated value can occasionally fail one, in which case the raw pre-refine value is
           returned rather than throwing. <code>zod</code> is an optional peer dependency
-          (<code>^4.0.0</code>); the main <code>forgedata</code> entry point never imports it.
+          (<code>^4.0.0</code>); the main <code>forgedatajs</code> entry point never imports it.
         </p>
 
         <h2 id="react">React Integration</h2>
-        <pre><code>npm install forgedata react</code></pre>
-        <pre><code>import { ForgeDataProvider } from "forgedata/react";
+        <pre><code>npm install forgedatajs react</code></pre>
+        <pre><code>import { ForgeDataProvider } from "forgedatajs/react";
 
 function App() {
   return (
@@ -287,7 +287,7 @@ function App() {
             <tr><td><code>instance</code></td><td><code>ForgeData</code></td><td>Reuse an instance you already constructed.</td></tr>
           </tbody>
         </table>
-        <pre><code>import { useGenerator } from "forgedata/react";
+        <pre><code>import { useGenerator } from "forgedatajs/react";
 
 function UserCard({ userId }) {
   const user = useGenerator(
@@ -302,11 +302,11 @@ function UserCard({ userId }) {
         <p>
           <code>useForgeData()</code> works even without a <code>ForgeDataProvider</code> (it falls back
           to a shared default instance). <code>react</code> is an optional peer dependency — the main
-          <code>forgedata</code> entry point never imports it.
+          <code>forgedatajs</code> entry point never imports it.
         </p>
 
         <h2 id="cli">CLI Reference</h2>
-        <pre><code>npx --package=forgedata forgedata --help</code></pre>
+        <pre><code>npx --package=forgedatajs forgedata --help</code></pre>
         <pre><code>forgedata v0.2.0 — fake data from the command line
 
 Usage:
@@ -327,7 +327,7 @@ forgedata generate location.country --locale ja --json</code></pre>
             <tr><td><code>--json</code></td><td>Print JSON instead of plain lines.</td></tr>
           </tbody>
         </table>
-        <p>Install globally for the short command: <code>npm install -g forgedata</code>, then just run <code>forgedata ...</code>.</p>
+        <p>Install globally for the short command: <code>npm install -g forgedatajs</code>, then just run <code>forgedata ...</code>.</p>
 
         <h2 id="migration-guide">Migration from Faker.js</h2>
         <table>
@@ -362,7 +362,7 @@ npm run preflight   # lint + typecheck + 100%-coverage tests + build</code></pre
         <div class="flex gap-6">
           <a href="./index.html" class="hover:text-slate-900 dark:hover:text-white">Home</a>
           <a href="https://github.com/SahinurDEV/ForgeData" class="hover:text-slate-900 dark:hover:text-white">GitHub</a>
-          <a href="https://www.npmjs.com/package/forgedata" class="hover:text-slate-900 dark:hover:text-white">npm</a>
+          <a href="https://www.npmjs.com/package/forgedatajs" class="hover:text-slate-900 dark:hover:text-white">npm</a>
         </div>
       </div>
     </footer>

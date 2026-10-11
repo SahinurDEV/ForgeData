@@ -6,18 +6,18 @@
 
 A production-ready alternative to Faker.js — with React integration and a CLI built in.
 
-[![npm version](https://img.shields.io/npm/v/forgedata.svg?color=6366f1)](https://www.npmjs.com/package/forgedata)
-[![npm downloads](https://img.shields.io/npm/dm/forgedata.svg?color=6366f1)](https://www.npmjs.com/package/forgedata)
+[![npm version](https://img.shields.io/npm/v/forgedatajs.svg?color=6366f1)](https://www.npmjs.com/package/forgedatajs)
+[![npm downloads](https://img.shields.io/npm/dm/forgedatajs.svg?color=6366f1)](https://www.npmjs.com/package/forgedatajs)
 [![CI](https://img.shields.io/github/actions/workflow/status/SahinurDEV/ForgeData/ci.yml?branch=main&label=CI)](https://github.com/SahinurDEV/ForgeData/actions/workflows/ci.yml)
 [![coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](./vitest.config.ts)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/forgedata.svg)](https://bundlephobia.com/package/forgedata)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/forgedatajs.svg)](https://bundlephobia.com/package/forgedatajs)
 [![types](https://img.shields.io/badge/types-included-3178c6?logo=typescript&logoColor=white)](./src/index.ts)
-[![license](https://img.shields.io/npm/l/forgedata.svg?color=6366f1)](./LICENSE)
+[![license](https://img.shields.io/npm/l/forgedatajs.svg?color=6366f1)](./LICENSE)
 
 [**Website**](https://sahinurdev.github.io/ForgeData/) &nbsp;·&nbsp;
 [**Try it live**](https://sahinurdev.github.io/ForgeData/#playground) &nbsp;·&nbsp;
 [**Docs**](https://sahinurdev.github.io/ForgeData/docs.html) &nbsp;·&nbsp;
-[**npm**](https://www.npmjs.com/package/forgedata) &nbsp;·&nbsp;
+[**npm**](https://www.npmjs.com/package/forgedatajs) &nbsp;·&nbsp;
 [**GitHub**](https://github.com/SahinurDEV/ForgeData)
 
 </div>
@@ -33,8 +33,8 @@ A production-ready alternative to Faker.js — with React integration and a CLI 
 - **Seedable** — deterministic output for tests and snapshots
 - **9 built-in locales**, plus a custom locale API
 - **Custom generators** via `forge.define(...)`
-- **Schema-based generation** (`forgedata/zod`): fake data straight from a Zod schema
-- **React integration** (`forgedata/react`): a provider + two hooks
+- **Schema-based generation** (`forgedatajs/zod`): fake data straight from a Zod schema
+- **React integration** (`forgedatajs/react`): a provider + two hooks
 - **CLI** (`forgedata`): generate fake data from your terminal or scripts
 - **100% test coverage** (statements/branches/functions/lines)
 
@@ -61,13 +61,13 @@ A production-ready alternative to Faker.js — with React integration and a CLI 
 ## Install
 
 ```bash
-npm install forgedata
+npm install forgedatajs
 ```
 
 ## Quick start
 
 ```ts
-import { ForgeData } from "forgedata";
+import { ForgeData } from "forgedatajs";
 
 const forge = new ForgeData();
 
@@ -82,7 +82,7 @@ forge.ai.prompt();                // "Explain quantum computing to a beginner...
 Or use the ready-made default instance for quick scripts:
 
 ```ts
-import { forge } from "forgedata";
+import { forge } from "forgedatajs";
 
 console.log(forge.person.fullName());
 ```
@@ -184,12 +184,12 @@ This is what the CLI is built on.
 ## Zod schema generation
 
 ```bash
-npm install forgedata zod
+npm install forgedatajs zod
 ```
 
 ```ts
 import { z } from "zod";
-import { fromZodSchema } from "forgedata/zod";
+import { fromZodSchema } from "forgedatajs/zod";
 
 const UserSchema = z.object({
   id: z.string().uuid(),
@@ -209,12 +209,12 @@ const user = fromZodSchema(forge, UserSchema);
 
 Supports the full range of Zod v4 schema types recursively: primitives (with format-aware strings — `.email()`, `.url()`, `.uuid()`, `.datetime()`, `.ipv4()`, `.jwt()`, and more — plus `.min()`/`.max()`/`.length()`), `object`, `array`, `tuple`, `record`, `map`, `set`, `enum`/native enums, `literal`, `union`/discriminated union, `optional`/`nullable`/`default`/`catch`, and recursive schemas via `z.lazy()` (depth-capped, so a self-referential schema can't blow the stack).
 
-`.transform()`/`.pipe()` are run through the schema's real `safeParse()` after generation, so the output reflects the actual post-transform shape. Arbitrary `.refine()` predicates aren't evaluated ahead of time — a generated value can occasionally fail one, in which case the raw (pre-refine) value is returned rather than throwing. `zod` is an optional peer dependency (`^4.0.0`); the main `forgedata` entry point never imports it, exactly like the React integration.
+`.transform()`/`.pipe()` are run through the schema's real `safeParse()` after generation, so the output reflects the actual post-transform shape. Arbitrary `.refine()` predicates aren't evaluated ahead of time — a generated value can occasionally fail one, in which case the raw (pre-refine) value is returned rather than throwing. `zod` is an optional peer dependency (`^4.0.0`); the main `forgedatajs` entry point never imports it, exactly like the React integration.
 
 ## React integration
 
 ```tsx
-import { ForgeDataProvider, useForgeData, useGenerator } from "forgedata/react";
+import { ForgeDataProvider, useForgeData, useGenerator } from "forgedatajs/react";
 
 function App() {
   return (
@@ -234,19 +234,19 @@ function UserCard() {
 }
 ```
 
-`useForgeData()` works even without a `ForgeDataProvider` (it falls back to a shared default instance) — wrap your tree in a provider whenever you need a specific seed/locale or per-instance isolation. `react` is an optional peer dependency; the main `forgedata` entry point never imports it.
+`useForgeData()` works even without a `ForgeDataProvider` (it falls back to a shared default instance) — wrap your tree in a provider whenever you need a specific seed/locale or per-instance isolation. `react` is an optional peer dependency; the main `forgedatajs` entry point never imports it.
 
 ## CLI
 
 ```bash
-npx --package=forgedata forgedata list                     # every generator id
-npx --package=forgedata forgedata list --module person     # filtered to one module
-npx --package=forgedata forgedata generate person.fullName # one value
-npx --package=forgedata forgedata generate internet.email --count 5 --seed 42
-npx --package=forgedata forgedata generate location.country --locale ja --json
+npx --package=forgedatajs forgedata list                     # every generator id
+npx --package=forgedatajs forgedata list --module person     # filtered to one module
+npx --package=forgedatajs forgedata generate person.fullName # one value
+npx --package=forgedatajs forgedata generate internet.email --count 5 --seed 42
+npx --package=forgedatajs forgedata generate location.country --locale ja --json
 ```
 
-Install it globally (`npm install -g forgedata`) to just run `forgedata ...` directly; see the [docs site](https://sahinurdev.github.io/ForgeData/docs.html#cli) for the full flag reference.
+Install it globally (`npm install -g forgedatajs`) to just run `forgedata ...` directly; see the [docs site](https://sahinurdev.github.io/ForgeData/docs.html#cli) for the full flag reference.
 
 ## Modules
 
@@ -277,8 +277,8 @@ ForgeData avoids Node-only APIs in `src/` — it uses only `btoa`, `Math`/`Date`
 
 - **Node.js**: `import`/`require` both work out of the box.
 - **Bun**: works via the same ESM/CJS builds.
-- **Deno**: `import { ForgeData } from "npm:forgedata";`
-- **Browsers**: `import { ForgeData } from "forgedata";` through any bundler, or `examples/browser.html` for a zero-bundler example.
+- **Deno**: `import { ForgeData } from "npm:forgedatajs";`
+- **Browsers**: `import { ForgeData } from "forgedatajs";` through any bundler, or `examples/browser.html` for a zero-bundler example.
 
 ## Development
 
@@ -318,7 +318,7 @@ npm publish --access public
 
 `scripts/publish.sh` wraps that sequence with a confirmation prompt, and `RELEASE_NOTES.md` has a ready-to-paste description for the GitHub Release / npm announcement.
 
-For every release after the first, `.github/workflows/release.yml` runs [semantic-release](https://semantic-release.gitbook.io/) on pushes to `main` — it derives the next version from [Conventional Commits](https://www.conventionalcommits.org/), updates `CHANGELOG.md`, tags, and publishes to npm via [Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC, with provenance) — no `NPM_TOKEN` secret is needed. It requires a one-time trusted publisher for `forgedata` on npmjs.com (GitHub Actions, `SahinurDEV` / `ForgeData`, workflow `release.yml`); see the docs site's [Contributing](https://sahinurdev.github.io/ForgeData/docs.html#contributing) section.
+For every release after the first, `.github/workflows/release.yml` runs [semantic-release](https://semantic-release.gitbook.io/) on pushes to `main` — it derives the next version from [Conventional Commits](https://www.conventionalcommits.org/), updates `CHANGELOG.md`, tags, and publishes to npm via [Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC, with provenance) — no `NPM_TOKEN` secret is needed. It requires a one-time trusted publisher for `forgedatajs` on npmjs.com (GitHub Actions, `SahinurDEV` / `ForgeData`, workflow `release.yml`); see the docs site's [Contributing](https://sahinurdev.github.io/ForgeData/docs.html#contributing) section.
 
 ## License
 

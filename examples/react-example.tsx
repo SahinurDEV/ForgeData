@@ -1,6 +1,6 @@
 // Illustrative React example — drop into any React + bundler setup
-// (Vite, Next.js, CRA, etc.) after `npm install forgedata react`.
-import { ForgeDataProvider, useGenerator } from "forgedata/react";
+// (Vite, Next.js, CRA, etc.) after `npm install forgedatajs react`.
+import { ForgeDataProvider, useGenerator } from "forgedatajs/react";
 
 function UserCard({ userId }: { userId: string }) {
   const user = useGenerator(
