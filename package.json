@@ -1,14 +1,16 @@
 {
   "name": "forgedata",
   "version": "0.2.0",
-  "description": "A modern, modular, tree-shakable, zero-dependency fake data generator for TypeScript and JavaScript. A production-ready alternative to Faker.js with React integration and a CLI.",
+  "description": "A modern, modular, tree-shakable, zero-dependency fake data generator for TypeScript and JavaScript. A production-ready alternative to Faker.js with seedable output, 9 locales, Zod schema generation, React hooks and a CLI.",
   "keywords": [
     "faker",
+    "faker-alternative",
     "fake-data",
     "mock",
     "mock-data",
     "test-data",
     "seed",
+    "locale",
     "typescript",
     "generator",
     "react",
@@ -125,7 +127,10 @@
   "bugs": {
     "url": "https://github.com/SahinurDEV/ForgeData/issues"
   },
-  "author": "ForgeData Contributors",
+  "author": {
+    "name": "Sahinur Islam",
+    "url": "https://github.com/SahinurDEV"
+  },
   "publishConfig": {
     "access": "public"
   },
