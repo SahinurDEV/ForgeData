@@ -128,5 +128,8 @@
   "author": "ForgeData Contributors",
   "publishConfig": {
     "access": "public"
+  },
+  "overrides": {
+    "@semantic-release/github": "^12.0.10"
   }
 }
