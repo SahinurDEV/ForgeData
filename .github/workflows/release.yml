@@ -3,10 +3,21 @@ name: Release
 # Runs semantic-release on every push to main. It only actually cuts a
 # release (version bump, CHANGELOG.md, git tag, GitHub release, npm publish)
 # when there are unreleased Conventional Commits (feat:/fix:/etc.) since the
-# last release, AND the NPM_TOKEN secret below is configured. Until you add
-# that secret, this workflow safely fails at the publish step and nothing is
-# published — publishing manually via `npm login && npm publish --access
-# public` (see RELEASE_NOTES.md) is unaffected either way.
+# last release.
+#
+# npm publishing uses npm Trusted Publishing (OIDC): no NPM_TOKEN secret is
+# needed. The job's `id-token: write` permission lets npm exchange a
+# short-lived GitHub OIDC token for a one-off publish credential, and npm
+# attaches a provenance attestation automatically. This requires a trusted
+# publisher for @sahinur/forgedata on npmjs.com pointing at this repository
+# and this workflow file (`release.yml`), plus Node >= 22.14 and npm >= 11.5.1
+# (semantic-release 25 / @semantic-release/npm 13 bundle a recent npm).
+#
+# Until that trusted publisher exists on npmjs.com, this job fails in
+# semantic-release's verifyConditions step (no OIDC exchange possible and no
+# NPM_TOKEN), i.e. BEFORE any version bump, tag, GitHub release or publish, so
+# nothing is half-released. Manual `npm login && npm publish --access public`
+# (see RELEASE_NOTES.md) keeps working either way.
 on:
   push:
     branches: [main]
@@ -18,10 +29,10 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-      id-token: write
+      contents: write # push the release commit/tag, create the GitHub release
+      issues: write # comment on released issues / open a failure issue
+      pull-requests: write # comment on released pull requests
+      id-token: write # npm Trusted Publishing (OIDC) + provenance
     steps:
       - uses: actions/checkout@v7
         with:
@@ -30,9 +41,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: 22.x
-          cache: "npm"
+          node-version: 24.x
           registry-url: "https://registry.npmjs.org"
+          # No dependency cache in the release job (avoids cache poisoning of
+          # the publishing build), as recommended by npm for trusted publishing.
+          package-manager-cache: false
 
       - name: Install dependencies
         run: npm ci
@@ -50,4 +63,3 @@ jobs:
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
