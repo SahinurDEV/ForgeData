@@ -1,5 +1,5 @@
 {
-  "name": "forgedata",
+  "name": "forgedatajs",
   "version": "0.2.0",
   "description": "A modern, modular, tree-shakable, zero-dependency fake data generator for TypeScript and JavaScript. A production-ready alternative to Faker.js with seedable output, 9 locales, Zod schema generation, React hooks and a CLI.",
   "keywords": [

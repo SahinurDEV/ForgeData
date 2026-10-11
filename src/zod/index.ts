@@ -262,7 +262,7 @@ function generateStructural(forge: ForgeData, schemaObj: object, depth: number):
  *
  * @example
  * import { z } from "zod";
- * import { fromZodSchema } from "forgedata/zod";
+ * import { fromZodSchema } from "forgedatajs/zod";
  *
  * const UserSchema = z.object({
  *   name: z.string(),

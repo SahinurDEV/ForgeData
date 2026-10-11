@@ -13,10 +13,10 @@ a CLI built in.
 
 ## What's new in 0.2.0
 
-- **Zod schema generation** at the `forgedata/zod` subpath:
+- **Zod schema generation** at the `forgedatajs/zod` subpath:
   ```ts
   import { z } from "zod";
-  import { fromZodSchema } from "forgedata/zod";
+  import { fromZodSchema } from "forgedatajs/zod";
 
   const UserSchema = z.object({
     name: z.string(),
@@ -47,8 +47,8 @@ a CLI built in.
   plus a custom locale API.
 - **Custom generators** (`forge.define()`) and a **unique-value generator**
   (`forge.unique.email()`, etc.).
-- **Zod schema generation** at `forgedata/zod`: `fromZodSchema()`.
-- **React integration** at `forgedata/react`: `ForgeDataProvider`,
+- **Zod schema generation** at `forgedatajs/zod`: `fromZodSchema()`.
+- **React integration** at `forgedatajs/react`: `ForgeDataProvider`,
   `useForgeData()`, `useGenerator()`.
 - **CLI** (`forgedata`): `forgedata generate person.fullName --seed 42`,
   `forgedata list --module internet --json`, and more.
@@ -59,16 +59,16 @@ a CLI built in.
 ## Install
 
 ```bash
-npm install forgedata
+npm install forgedatajs
 ```
 
 Previously published as the scoped `@sahinur/forgedata` (up to v0.2.0); the
-package is now the unscoped `forgedata`. The CLI command is `forgedata`.
+package is now the unscoped `forgedatajs`. The CLI command is `forgedata`.
 
 ## Quick start
 
 ```ts
-import { ForgeData } from "forgedata";
+import { ForgeData } from "forgedatajs";
 
 const forge = new ForgeData({ seed: 42 });
 forge.person.fullName();
@@ -81,7 +81,7 @@ migration notes from Faker.js.
 
 ## Links
 
-- npm: https://www.npmjs.com/package/forgedata
+- npm: https://www.npmjs.com/package/forgedatajs
 - Website: https://sahinurdev.github.io/ForgeData/
 - Docs: https://sahinurdev.github.io/ForgeData/docs.html
 - Changelog: [CHANGELOG.md](./CHANGELOG.md)
