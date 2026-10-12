@@ -1,3 +1,8 @@
+# Proposed replacement for .github/workflows/ci.yml in SahinurDEV/ForgeData.
+# Adds: (1) a Prettier format check, (2) a smoke test that installs the packed
+# tarball (npm pack) into a clean project and exercises ESM, CJS, the
+# react/zod subpaths' type-free imports and the CLI bin, and (3) least-privilege
+# token permissions. The existing matrix job is unchanged.
 name: CI
 
 on:
@@ -5,6 +10,13 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   test:
@@ -43,3 +55,80 @@ jobs:
         with:
           name: coverage
           path: coverage
+
+  format:
+    name: Format check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22.x
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Prettier
+        run: npm run format:check
+
+  pack-smoke:
+    name: Packed package smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22.x
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Build and pack
+        run: |
+          npm run build
+          npm pack --pack-destination "$RUNNER_TEMP"
+          ls -l "$RUNNER_TEMP"/forgedatajs-*.tgz
+
+      - name: Install tarball into a clean project
+        working-directory: ${{ runner.temp }}
+        run: |
+          mkdir smoke && cd smoke
+          npm init -y > /dev/null
+          npm install "$RUNNER_TEMP"/forgedatajs-*.tgz zod react
+
+      - name: ESM import
+        working-directory: ${{ runner.temp }}/smoke
+        run: |
+          node --input-type=module -e '
+            import { ForgeData, forge } from "forgedatajs";
+            import { fromZodSchema } from "forgedatajs/zod";
+            import * as react from "forgedatajs/react";
+            import { z } from "zod";
+            const f = new ForgeData({ seed: 1 });
+            if (typeof f.person.fullName() !== "string") throw new Error("ESM core failed");
+            if (typeof forge.internet.email() !== "string") throw new Error("default instance failed");
+            const u = fromZodSchema(f, z.object({ email: z.string().email() }));
+            if (!u.email.includes("@")) throw new Error("zod subpath failed");
+            if (typeof react.useGenerator !== "function") throw new Error("react subpath failed");
+            console.log("ESM OK");
+          '
+
+      - name: CommonJS require
+        working-directory: ${{ runner.temp }}/smoke
+        run: |
+          node -e '
+            const { ForgeData } = require("forgedatajs");
+            require("forgedatajs/zod");
+            require("forgedatajs/react");
+            if (typeof new ForgeData({ seed: 1 }).person.fullName() !== "string") throw new Error("CJS failed");
+            console.log("CJS OK");
+          '
+
+      - name: CLI bin
+        working-directory: ${{ runner.temp }}/smoke
+        run: |
+          npx --no-install forgedata --version
+          npx --no-install forgedata generate person.fullName --seed 1
+          npx --no-install forgedata list --module person --json > /dev/null
