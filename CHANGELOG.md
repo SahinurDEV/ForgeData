@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/SahinurDEV/ForgeData/compare/v0.2.0...v0.2.1) (2026-10-12)
+
+
+### Bug Fixes
+
+* **release:** override @semantic-release/github to ^12.0.10 to fix fail-step crash ([55fa26e](https://github.com/SahinurDEV/ForgeData/commit/55fa26ede3f83087b25c2ffbc5a020ee4f14c4ec))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
