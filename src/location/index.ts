@@ -2,10 +2,22 @@ import type { Random } from "../helpers/random.js";
 import type { LocaleRegistry } from "../locales/index.js";
 
 const TIMEZONES = [
-  "UTC", "America/New_York", "America/Los_Angeles", "America/Chicago",
-  "Europe/London", "Europe/Paris", "Europe/Berlin", "Asia/Tokyo",
-  "Asia/Shanghai", "Asia/Dhaka", "Asia/Kolkata", "Asia/Dubai",
-  "Australia/Sydney", "Pacific/Auckland", "Africa/Cairo", "Africa/Johannesburg",
+  "UTC",
+  "America/New_York",
+  "America/Los_Angeles",
+  "America/Chicago",
+  "Europe/London",
+  "Europe/Paris",
+  "Europe/Berlin",
+  "Asia/Tokyo",
+  "Asia/Shanghai",
+  "Asia/Dhaka",
+  "Asia/Kolkata",
+  "Asia/Dubai",
+  "Australia/Sydney",
+  "Pacific/Auckland",
+  "Africa/Cairo",
+  "Africa/Johannesburg",
 ];
 
 const AIRPORTS = [

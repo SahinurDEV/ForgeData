@@ -1,9 +1,38 @@
 import type { Random } from "../helpers/random.js";
 
-const EMOJIS = ["😀", "😂", "😍", "🤔", "😎", "🚀", "🔥", "✨", "🎉", "👍", "❤️", "🙌", "💡", "🐛", "⚡"];
+const EMOJIS = [
+  "😀",
+  "😂",
+  "😍",
+  "🤔",
+  "😎",
+  "🚀",
+  "🔥",
+  "✨",
+  "🎉",
+  "👍",
+  "❤️",
+  "🙌",
+  "💡",
+  "🐛",
+  "⚡",
+];
 const PROGRAMMING_LANGUAGES = [
-  "TypeScript", "JavaScript", "Python", "Rust", "Go", "Java", "C#", "C++",
-  "Ruby", "Swift", "Kotlin", "PHP", "Elixir", "Haskell", "Scala",
+  "TypeScript",
+  "JavaScript",
+  "Python",
+  "Rust",
+  "Go",
+  "Java",
+  "C#",
+  "C++",
+  "Ruby",
+  "Swift",
+  "Kotlin",
+  "PHP",
+  "Elixir",
+  "Haskell",
+  "Scala",
 ];
 const GITHUB_ADJECTIVES = ["swift", "brave", "quiet", "clever", "bold", "calm", "eager", "gentle"];
 const GITHUB_NOUNS = ["falcon", "otter", "panda", "comet", "maple", "cipher", "ember", "harbor"];
@@ -11,15 +40,57 @@ const DOCKER_NAMESPACES = ["library", "bitnami", "myorg", "acme", "opensource"];
 const DOCKER_IMAGES = ["nginx", "postgres", "redis", "node", "python", "alpine", "ubuntu", "mongo"];
 const NPM_SCOPES = ["", "@acme/", "@myorg/", "@opensource/"];
 const NPM_WORDS = ["fast", "tiny", "smart", "auto", "core", "utils", "kit", "toolbox"];
-const MOVIES = ["The Great Escape", "Silent Horizon", "Beyond the Stars", "Midnight Protocol", "Echoes of Tomorrow"];
-const BOOKS = ["The Silent Path", "Whispers of the Sea", "The Last Algorithm", "Shadows of Time", "A Quiet Revolution"];
-const MUSIC_TRACKS = ["Midnight Drive", "Golden Hour", "Neon Dreams", "Ocean Static", "Paper Skies"];
-const FOODS = ["Sushi", "Pizza", "Tacos", "Ramen", "Paella", "Biryani", "Croissant", "Dumplings", "Curry", "Pho"];
-const HOLIDAYS = ["New Year's Day", "Independence Day", "Thanksgiving", "Diwali", "Eid al-Fitr", "Christmas", "Lunar New Year"];
+const MOVIES = [
+  "The Great Escape",
+  "Silent Horizon",
+  "Beyond the Stars",
+  "Midnight Protocol",
+  "Echoes of Tomorrow",
+];
+const BOOKS = [
+  "The Silent Path",
+  "Whispers of the Sea",
+  "The Last Algorithm",
+  "Shadows of Time",
+  "A Quiet Revolution",
+];
+const MUSIC_TRACKS = [
+  "Midnight Drive",
+  "Golden Hour",
+  "Neon Dreams",
+  "Ocean Static",
+  "Paper Skies",
+];
+const FOODS = [
+  "Sushi",
+  "Pizza",
+  "Tacos",
+  "Ramen",
+  "Paella",
+  "Biryani",
+  "Croissant",
+  "Dumplings",
+  "Curry",
+  "Pho",
+];
+const HOLIDAYS = [
+  "New Year's Day",
+  "Independence Day",
+  "Thanksgiving",
+  "Diwali",
+  "Eid al-Fitr",
+  "Christmas",
+  "Lunar New Year",
+];
 const UNIVERSITIES = [
-  "University of Oxford", "Harvard University", "Stanford University",
-  "University of Tokyo", "ETH Zurich", "National University of Singapore",
-  "University of Dhaka", "Indian Institute of Technology",
+  "University of Oxford",
+  "Harvard University",
+  "Stanford University",
+  "University of Tokyo",
+  "ETH Zurich",
+  "National University of Singapore",
+  "University of Dhaka",
+  "Indian Institute of Technology",
 ];
 
 export class MiscModule {

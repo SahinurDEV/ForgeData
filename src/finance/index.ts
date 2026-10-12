@@ -37,7 +37,18 @@ const CRYPTO_COINS = [
   { name: "Chainlink", symbol: "LINK" },
 ];
 
-const STOCK_SYMBOLS = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "META", "NVDA", "NFLX", "AMD", "INTC"];
+const STOCK_SYMBOLS = [
+  "AAPL",
+  "MSFT",
+  "GOOGL",
+  "AMZN",
+  "TSLA",
+  "META",
+  "NVDA",
+  "NFLX",
+  "AMD",
+  "INTC",
+];
 
 /** Appends a valid Luhn check digit to a numeric string. */
 function withLuhnCheckDigit(digits: string): string {
@@ -74,7 +85,12 @@ export class FinanceModule {
   creditCardNumber(scheme?: keyof typeof CARD_PREFIXES): string {
     const cardScheme =
       scheme ??
-      (this.random.arrayElement(["visa", "mastercard", "amex", "discover"]) as keyof typeof CARD_PREFIXES);
+      (this.random.arrayElement([
+        "visa",
+        "mastercard",
+        "amex",
+        "discover",
+      ]) as keyof typeof CARD_PREFIXES);
     const prefix = CARD_PREFIXES[cardScheme];
     const totalLength = cardScheme === "amex" ? 15 : 16;
     let digits = prefix;

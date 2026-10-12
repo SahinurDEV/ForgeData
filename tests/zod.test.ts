@@ -6,7 +6,8 @@ import { fromZodSchema } from "../src/zod/index.js";
 const forge = new ForgeData({ seed: 1 });
 
 describe("fromZodSchema: string formats", () => {
-  it("email", () => expect(fromZodSchema(forge, z.string().email())).toMatch(/^[^\s@]+@[^\s@]+\.[^\s@]+$/));
+  it("email", () =>
+    expect(fromZodSchema(forge, z.string().email())).toMatch(/^[^\s@]+@[^\s@]+\.[^\s@]+$/));
   it("url", () => expect(fromZodSchema(forge, z.string().url())).toMatch(/^https?:\/\//));
   it("uuid", () => expect(fromZodSchema(forge, z.string().uuid())).toMatch(/^[0-9a-f-]{36}$/));
   it("guid", () => expect(fromZodSchema(forge, z.guid())).toMatch(/^[0-9a-f-]{36}$/));
@@ -15,7 +16,8 @@ describe("fromZodSchema: string formats", () => {
       expect(fromZodSchema(forge, schema)).toMatch(/^[a-z0-9]{21}$/);
     }
   });
-  it("datetime", () => expect(() => new Date(fromZodSchema(forge, z.string().datetime()) as string)).not.toThrow());
+  it("datetime", () =>
+    expect(() => new Date(fromZodSchema(forge, z.string().datetime()) as string)).not.toThrow());
   it("date", () => expect(fromZodSchema(forge, z.string().date())).toMatch(/^\d{4}-\d{2}-\d{2}$/));
   it("time", () => expect(fromZodSchema(forge, z.string().time())).toMatch(/^\d{2}:\d{2}:\d{2}$/));
   it("ipv4", () => expect(fromZodSchema(forge, z.string().ipv4()).split(".")).toHaveLength(4));
@@ -49,7 +51,7 @@ describe("fromZodSchema: string formats", () => {
   });
 
   it("respects an exact length()", () => {
-    expect((fromZodSchema(forge, z.string().length(5)) as string)).toHaveLength(5);
+    expect(fromZodSchema(forge, z.string().length(5)) as string).toHaveLength(5);
   });
 });
 
@@ -144,10 +146,10 @@ describe("fromZodSchema: collections", () => {
   });
 
   it("object generates every key", () => {
-    const value = fromZodSchema(
-      forge,
-      z.object({ name: z.string(), age: z.number() }),
-    ) as { name: string; age: number };
+    const value = fromZodSchema(forge, z.object({ name: z.string(), age: z.number() })) as {
+      name: string;
+      age: number;
+    };
     expect(typeof value.name).toBe("string");
     expect(typeof value.age).toBe("number");
   });
@@ -185,7 +187,9 @@ describe("fromZodSchema: wrappers", () => {
   });
 
   it("default() sometimes yields the default, sometimes a fresh value", () => {
-    const values = Array.from({ length: 60 }, () => fromZodSchema(forge, z.string().default("fallback")));
+    const values = Array.from({ length: 60 }, () =>
+      fromZodSchema(forge, z.string().default("fallback")),
+    );
     expect(values.some((v) => v === "fallback")).toBe(true);
     expect(values.some((v) => typeof v === "string" && v !== "fallback")).toBe(true);
   });

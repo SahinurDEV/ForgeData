@@ -13,7 +13,15 @@ export type { LocaleData, CustomLocaleData } from "./types.js";
 export { en, bn, hi, ar, ja, fr, de, es, zh };
 
 export const builtInLocales: Record<string, LocaleData> = {
-  en, bn, hi, ar, ja, fr, de, es, zh,
+  en,
+  bn,
+  hi,
+  ar,
+  ja,
+  fr,
+  de,
+  es,
+  zh,
 };
 
 export type BuiltInLocaleCode = keyof typeof builtInLocales;

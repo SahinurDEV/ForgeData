@@ -2,9 +2,27 @@ import type { Random } from "../helpers/random.js";
 import type { PersonModule } from "../person/index.js";
 import { base64Url, transliterate } from "../helpers/format.js";
 
-const EMAIL_DOMAINS = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "example.com", "protonmail.com"];
+const EMAIL_DOMAINS = [
+  "gmail.com",
+  "yahoo.com",
+  "outlook.com",
+  "hotmail.com",
+  "example.com",
+  "protonmail.com",
+];
 const TLDS = ["com", "net", "org", "io", "dev", "co", "app"];
-const DOMAIN_WORDS = ["nova", "pixel", "cloud", "byte", "logic", "spark", "forge", "vertex", "quantum", "orbit"];
+const DOMAIN_WORDS = [
+  "nova",
+  "pixel",
+  "cloud",
+  "byte",
+  "logic",
+  "spark",
+  "forge",
+  "vertex",
+  "quantum",
+  "orbit",
+];
 const BROWSERS = [
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
@@ -35,7 +53,9 @@ export class InternetModule {
    */
   private safeName(name: string): string {
     const transliterated = transliterate(name);
-    return transliterated.length > 0 ? transliterated : this.random.alphaNumeric(6, "abcdefghijklmnopqrstuvwxyz");
+    return transliterated.length > 0
+      ? transliterated
+      : this.random.alphaNumeric(6, "abcdefghijklmnopqrstuvwxyz");
   }
 
   username(firstName?: string, lastName?: string): string {
@@ -99,7 +119,9 @@ export class InternetModule {
     return this.random.hex(64);
   }
 
-  jwt(payload: Record<string, unknown> = { sub: "1234567890", name: "John Doe", iat: 1516239022 }): string {
+  jwt(
+    payload: Record<string, unknown> = { sub: "1234567890", name: "John Doe", iat: 1516239022 },
+  ): string {
     const header = { alg: "HS256", typ: "JWT" };
     const headerPart = base64Url(JSON.stringify(header));
     const payloadPart = base64Url(JSON.stringify(payload));

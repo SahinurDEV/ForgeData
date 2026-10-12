@@ -110,7 +110,8 @@ export class Random {
     // Numeric TS enums carry a reverse mapping (number -> key) alongside the
     // forward one, doubling Object.values(); string enums don't, so this
     // ratio is how we tell which flavor we're dealing with.
-    const isReverseMappedNumericEnum = numericValues.length > 0 && numericValues.length * 2 === values.length;
+    const isReverseMappedNumericEnum =
+      numericValues.length > 0 && numericValues.length * 2 === values.length;
     const pool = isReverseMappedNumericEnum ? numericValues : values;
     return this.arrayElement(pool) as T[keyof T];
   }

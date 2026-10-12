@@ -23,7 +23,7 @@ describe("ImageModule", () => {
     const uri = image.dataUri(10, 20, "ff0000");
     expect(uri).toMatch(/^data:image\/svg\+xml;base64,/);
     const decoded = Buffer.from(uri.split(",")[1] as string, "base64").toString("utf-8");
-    expect(decoded).toContain("width=\"10\"");
+    expect(decoded).toContain('width="10"');
     expect(image.dataUri()).toMatch(/^data:image\/svg\+xml;base64,/);
   });
 });

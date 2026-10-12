@@ -163,9 +163,22 @@ describe("ForgeData", () => {
     expect(descriptors.length).toBeGreaterThanOrEqual(100);
     const moduleNames = new Set(descriptors.map((d) => d.module));
     for (const name of [
-      "person", "internet", "company", "finance", "location", "commerce",
-      "phone", "date", "image", "lorem", "color", "vehicle", "animal",
-      "science", "ai", "misc",
+      "person",
+      "internet",
+      "company",
+      "finance",
+      "location",
+      "commerce",
+      "phone",
+      "date",
+      "image",
+      "lorem",
+      "color",
+      "vehicle",
+      "animal",
+      "science",
+      "ai",
+      "misc",
     ]) {
       expect(moduleNames).toContain(name);
     }

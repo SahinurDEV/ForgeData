@@ -33,7 +33,10 @@ export interface UniqueApi {
   username(): string;
   uuid(): string;
   /** Wraps any generator function so repeated calls of the returned function never repeat a value. */
-  wrap<Args extends unknown[], R>(fn: (...args: Args) => R, options?: UniqueOptions): (...args: Args) => R;
+  wrap<Args extends unknown[], R>(
+    fn: (...args: Args) => R,
+    options?: UniqueOptions,
+  ): (...args: Args) => R;
   /** Forgets every value produced so far, allowing repeats again. */
   clear(): void;
 }
