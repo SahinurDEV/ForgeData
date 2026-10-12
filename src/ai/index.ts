@@ -9,22 +9,38 @@ const PROMPT_TEMPLATES = [
   "Generate five creative use cases for {topic}.",
 ];
 const TOPICS = [
-  "quantum computing", "climate change", "machine learning", "the stock market",
-  "ancient Rome", "black holes", "renewable energy", "blockchain technology",
+  "quantum computing",
+  "climate change",
+  "machine learning",
+  "the stock market",
+  "ancient Rome",
+  "black holes",
+  "renewable energy",
+  "blockchain technology",
 ];
 
 const LOG_LEVELS = ["INFO", "WARN", "ERROR", "DEBUG"];
 const LOG_MESSAGES = [
-  "Request completed successfully", "Connection timed out", "Cache miss for key",
-  "Retrying operation", "Failed to parse response", "Rate limit exceeded",
-  "Background job finished", "Database connection established",
+  "Request completed successfully",
+  "Connection timed out",
+  "Cache miss for key",
+  "Retrying operation",
+  "Failed to parse response",
+  "Rate limit exceeded",
+  "Background job finished",
+  "Database connection established",
 ];
 
 const COMMIT_TYPES = ["feat", "fix", "chore", "refactor", "docs", "test", "perf"];
 const COMMIT_SUBJECTS = [
-  "add input validation", "resolve race condition in worker pool",
-  "improve error messages", "update dependencies", "simplify config loader",
-  "fix flaky test", "optimize database query", "add missing types",
+  "add input validation",
+  "resolve race condition in worker pool",
+  "improve error messages",
+  "update dependencies",
+  "simplify config loader",
+  "fix flaky test",
+  "optimize database query",
+  "add missing types",
 ];
 
 const ISSUE_TITLES = [
@@ -37,8 +53,14 @@ const ISSUE_TITLES = [
 ];
 
 const HTTP_STATUS: Record<number, string> = {
-  200: "OK", 201: "Created", 204: "No Content", 400: "Bad Request",
-  401: "Unauthorized", 403: "Forbidden", 404: "Not Found", 500: "Internal Server Error",
+  200: "OK",
+  201: "Created",
+  204: "No Content",
+  400: "Bad Request",
+  401: "Unauthorized",
+  403: "Forbidden",
+  404: "Not Found",
+  500: "Internal Server Error",
 };
 
 export interface ChatTurn {
@@ -108,7 +130,10 @@ export class AiModule {
     return {
       status,
       statusText: HTTP_STATUS[status] as string,
-      body: status < 300 ? { data: { id: this.random.int(1, 1000) } } : { error: this.lorem.sentence() },
+      body:
+        status < 300
+          ? { data: { id: this.random.int(1, 1000) } }
+          : { error: this.lorem.sentence() },
     };
   }
 

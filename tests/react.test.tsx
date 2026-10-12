@@ -26,7 +26,9 @@ describe("react integration", () => {
   it("ForgeDataProvider with an explicit instance reuses it exactly", () => {
     const instance = new ForgeData({ seed: 1 });
     const { result } = renderHook(() => useForgeData(), {
-      wrapper: ({ children }) => <ForgeDataProvider instance={instance}>{children}</ForgeDataProvider>,
+      wrapper: ({ children }) => (
+        <ForgeDataProvider instance={instance}>{children}</ForgeDataProvider>
+      ),
     });
     expect(result.current).toBe(instance);
   });
@@ -36,9 +38,7 @@ describe("react integration", () => {
       ({ id }: { id: number }) => useGenerator((forge) => forge.uuid(), [id]),
       {
         initialProps: { id: 1 },
-        wrapper: ({ children }) => (
-          <ForgeDataProvider seed={1}>{children}</ForgeDataProvider>
-        ),
+        wrapper: ({ children }) => <ForgeDataProvider seed={1}>{children}</ForgeDataProvider>,
       },
     );
     const first = result.current;
@@ -51,9 +51,7 @@ describe("react integration", () => {
       ({ id }: { id: number }) => useGenerator((forge) => `${id}-${forge.uuid()}`, [id]),
       {
         initialProps: { id: 1 },
-        wrapper: ({ children }) => (
-          <ForgeDataProvider seed={1}>{children}</ForgeDataProvider>
-        ),
+        wrapper: ({ children }) => <ForgeDataProvider seed={1}>{children}</ForgeDataProvider>,
       },
     );
     const first = result.current;

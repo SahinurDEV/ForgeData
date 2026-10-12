@@ -1,9 +1,47 @@
 import type { Random } from "../helpers/random.js";
 
-const ADJECTIVES = ["Sleek", "Rustic", "Ergonomic", "Handcrafted", "Compact", "Premium", "Portable", "Smart"];
-const MATERIALS = ["Steel", "Wooden", "Leather", "Cotton", "Plastic", "Ceramic", "Aluminum", "Glass"];
-const PRODUCTS = ["Chair", "Table", "Lamp", "Backpack", "Watch", "Keyboard", "Speaker", "Bottle", "Jacket", "Headphones"];
-const DEPARTMENTS = ["Electronics", "Home & Garden", "Sports", "Toys", "Books", "Beauty", "Automotive", "Grocery"];
+const ADJECTIVES = [
+  "Sleek",
+  "Rustic",
+  "Ergonomic",
+  "Handcrafted",
+  "Compact",
+  "Premium",
+  "Portable",
+  "Smart",
+];
+const MATERIALS = [
+  "Steel",
+  "Wooden",
+  "Leather",
+  "Cotton",
+  "Plastic",
+  "Ceramic",
+  "Aluminum",
+  "Glass",
+];
+const PRODUCTS = [
+  "Chair",
+  "Table",
+  "Lamp",
+  "Backpack",
+  "Watch",
+  "Keyboard",
+  "Speaker",
+  "Bottle",
+  "Jacket",
+  "Headphones",
+];
+const DEPARTMENTS = [
+  "Electronics",
+  "Home & Garden",
+  "Sports",
+  "Toys",
+  "Books",
+  "Beauty",
+  "Automotive",
+  "Grocery",
+];
 
 export class CommerceModule {
   constructor(private random: Random) {}

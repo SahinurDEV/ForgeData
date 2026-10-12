@@ -86,14 +86,18 @@ function flagString(value: string | boolean | undefined): string | undefined {
 export function runCli(argv: readonly string[], io: CliIO = defaultIO): number {
   const parsed = parseArgs(argv);
 
-  const wantsVersion = parsed.flags.version === true || parsed.flags.v === true || parsed.command === "version";
+  const wantsVersion =
+    parsed.flags.version === true || parsed.flags.v === true || parsed.command === "version";
   if (wantsVersion) {
     io.log(CLI_VERSION);
     return 0;
   }
 
   const wantsHelp =
-    parsed.flags.help === true || parsed.flags.h === true || parsed.command === "help" || parsed.command === undefined;
+    parsed.flags.help === true ||
+    parsed.flags.h === true ||
+    parsed.command === "help" ||
+    parsed.command === undefined;
   if (wantsHelp) {
     io.log(HELP_TEXT);
     return 0;
@@ -111,7 +115,13 @@ export function runCli(argv: readonly string[], io: CliIO = defaultIO): number {
         .listGenerators()
         .filter((g) => moduleFilter === undefined || g.module === moduleFilter);
       if (parsed.flags.json) {
-        io.log(JSON.stringify(generators.map((g) => g.id), null, 2));
+        io.log(
+          JSON.stringify(
+            generators.map((g) => g.id),
+            null,
+            2,
+          ),
+        );
       } else {
         for (const g of generators) io.log(g.id);
       }
@@ -129,7 +139,9 @@ export function runCli(argv: readonly string[], io: CliIO = defaultIO): number {
       const moduleName = dotIndex === -1 ? "" : id.slice(0, dotIndex);
       const methodName = dotIndex === -1 ? "" : id.slice(dotIndex + 1);
       if (!moduleName || !methodName) {
-        io.error(`Error: invalid generator id "${id}". Expected "<module>.<method>", e.g. "person.fullName".`);
+        io.error(
+          `Error: invalid generator id "${id}". Expected "<module>.<method>", e.g. "person.fullName".`,
+        );
         return 1;
       }
 

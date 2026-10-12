@@ -36,7 +36,9 @@ describe("InternetModule", () => {
 
   it("email() accepts explicit first/last name and domain overrides", () => {
     const internet = makeInternet("en");
-    expect(internet.email("Ada", "Lovelace", "example.org")).toMatch(/^ada.*lovelace.*@example\.org$/);
+    expect(internet.email("Ada", "Lovelace", "example.org")).toMatch(
+      /^ada.*lovelace.*@example\.org$/,
+    );
   });
 
   it("username() produces a non-empty string, with and without an explicit numeric suffix", () => {
@@ -63,8 +65,12 @@ describe("InternetModule", () => {
     const internet = makeInternet("en");
     expect(internet.password({ length: 20 })).toHaveLength(20);
     expect(internet.password()).toHaveLength(12);
-    expect(internet.password({ uppercase: false, numbers: false, symbols: false })).toMatch(/^[a-z]+$/);
-    expect(internet.password({ uppercase: true, numbers: false, symbols: false })).toMatch(/^[A-Za-z]+$/);
+    expect(internet.password({ uppercase: false, numbers: false, symbols: false })).toMatch(
+      /^[a-z]+$/,
+    );
+    expect(internet.password({ uppercase: true, numbers: false, symbols: false })).toMatch(
+      /^[A-Za-z]+$/,
+    );
   });
 
   it("domain() and url() are well-formed", () => {

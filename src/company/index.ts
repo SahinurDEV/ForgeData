@@ -13,7 +13,9 @@ export class CompanyModule {
     const locale = this.locales.current();
     const surname = this.person.lastName();
     const suffix = this.random.arrayElement(locale.company.suffixes);
-    return this.random.boolean(0.5) ? `${surname} ${suffix}` : `${surname} & ${this.person.lastName()}`;
+    return this.random.boolean(0.5)
+      ? `${surname} ${suffix}`
+      : `${surname} & ${this.person.lastName()}`;
   }
 
   catchPhrase(): string {

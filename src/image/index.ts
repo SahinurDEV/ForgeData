@@ -1,6 +1,15 @@
 import type { Random } from "../helpers/random.js";
 
-const CATEGORIES = ["nature", "people", "technology", "animals", "food", "architecture", "travel", "business"];
+const CATEGORIES = [
+  "nature",
+  "people",
+  "technology",
+  "animals",
+  "food",
+  "architecture",
+  "travel",
+  "business",
+];
 
 export class ImageModule {
   constructor(private random: Random) {}

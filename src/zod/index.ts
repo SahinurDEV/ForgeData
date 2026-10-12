@@ -60,7 +60,11 @@ function getLengthBounds(schema: IntrospectableSchema): { min?: number; max?: nu
   return { min, max };
 }
 
-function getNumberBounds(schema: IntrospectableSchema): { min?: number; max?: number; isInt: boolean } {
+function getNumberBounds(schema: IntrospectableSchema): {
+  min?: number;
+  max?: number;
+  isInt: boolean;
+} {
   let min: number | undefined;
   let max: number | undefined;
   let isInt = false;
@@ -124,7 +128,9 @@ function generateStructural(forge: ForgeData, schemaObj: object, depth: number):
       const { min, max, isInt } = getNumberBounds(schema);
       const lo = min ?? (max !== undefined ? max - 1000 : 0);
       const hi = max ?? (min !== undefined ? min + 1000 : lo + 1000);
-      return isInt ? forge.random.int(Math.ceil(lo), Math.floor(hi)) : forge.random.float(lo, hi, 2);
+      return isInt
+        ? forge.random.int(Math.ceil(lo), Math.floor(hi))
+        : forge.random.float(lo, hi, 2);
     }
 
     case "bigint":
@@ -189,7 +195,10 @@ function generateStructural(forge: ForgeData, schemaObj: object, depth: number):
       const count = forge.random.int(1, 4);
       const map = new Map<unknown, unknown>();
       for (let i = 0; i < count; i++) {
-        map.set(generateStructural(forge, keyType, depth + 1), generateStructural(forge, valueType, depth + 1));
+        map.set(
+          generateStructural(forge, keyType, depth + 1),
+          generateStructural(forge, valueType, depth + 1),
+        );
       }
       return map;
     }
@@ -200,7 +209,9 @@ function generateStructural(forge: ForgeData, schemaObj: object, depth: number):
         : undefined;
 
     case "nullable":
-      return forge.random.boolean(0.9) ? generateStructural(forge, schema.def.innerType as object, depth) : null;
+      return forge.random.boolean(0.9)
+        ? generateStructural(forge, schema.def.innerType as object, depth)
+        : null;
 
     case "default":
       return forge.random.boolean(0.7)
