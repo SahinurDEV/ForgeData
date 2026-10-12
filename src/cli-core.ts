@@ -5,7 +5,7 @@ import { ForgeData } from "./ForgeData.js";
 // It is rewritten automatically by scripts/sync-version.mjs (the npm `version`
 // lifecycle script, run by semantic-release when it bumps package.json), and
 // tests/cli.test.ts asserts it matches package.json.
-export const CLI_VERSION = "0.2.1";
+export const CLI_VERSION = "0.2.2";
 
 export interface ParsedArgs {
   command?: string;

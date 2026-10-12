@@ -1,3 +1,10 @@
+## [0.2.2](https://github.com/SahinurDEV/ForgeData/compare/v0.2.1...v0.2.2) (2026-10-12)
+
+
+### Bug Fixes
+
+* share one ForgeData type across entry points and keep CLI --version in sync ([#7](https://github.com/SahinurDEV/ForgeData/issues/7)) ([5094483](https://github.com/SahinurDEV/ForgeData/commit/509448371ebcb650885af5e6ebe618145dd5a318))
+
 ## [0.2.1](https://github.com/SahinurDEV/ForgeData/compare/v0.2.0...v0.2.1) (2026-10-12)
 
 
