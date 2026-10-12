@@ -1,0 +1,81 @@
+name: Bug report
+description: Report something that is not working as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please search
+        [existing issues](https://github.com/SahinurDEV/ForgeData/issues?q=is%3Aissue) first.
+        **Security vulnerabilities must be reported privately** — see
+        [SECURITY.md](https://github.com/SahinurDEV/ForgeData/blob/main/SECURITY.md).
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Code (or CLI command) that reproduces the problem. Include the seed and locale if relevant.
+      render: ts
+      placeholder: |
+        import { ForgeData } from "forgedatajs";
+        const forge = new ForgeData({ seed: 42, locale: "en" });
+        console.log(forge.person.fullName());
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include the full error message / stack trace if there is one.
+    validations:
+      required: true
+  - type: dropdown
+    id: entry
+    attributes:
+      label: Which part of ForgeData?
+      multiple: true
+      options:
+        - Core (forgedatajs)
+        - Zod integration (forgedatajs/zod)
+        - React integration (forgedatajs/react)
+        - CLI (forgedata)
+        - Locales
+        - Documentation / website
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: forgedatajs version
+      placeholder: "e.g. 0.2.2 (npm ls forgedatajs)"
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime and version
+      placeholder: "e.g. Node.js 22.11, Bun 1.1, Deno 2.0, Chrome 130"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "e.g. macOS 15, Ubuntu 24.04, Windows 11"
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Bundler, TypeScript version, zod/react versions, or anything else that might help.

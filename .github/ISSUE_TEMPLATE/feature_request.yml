@@ -1,0 +1,53 @@
+name: Feature request
+description: Suggest a new generator, locale, option or integration
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the suggestion! For open-ended ideas or questions, consider starting a
+        [discussion](https://github.com/SahinurDEV/ForgeData/discussions) instead.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: What are you trying to do, and why is it hard or impossible today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the API you would like. Example code is very welcome.
+      render: ts
+      placeholder: |
+        forge.location.streetAddress(); // "221B Baker Street"
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Workarounds you use today (e.g. forge.define(...)) or how other libraries solve this.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      multiple: true
+      options:
+        - New generator / module
+        - New locale
+        - Zod integration
+        - React integration
+        - CLI
+        - Documentation / website
+        - Tooling / DX
+        - Other
+    validations:
+      required: true
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I would be willing to open a pull request for this

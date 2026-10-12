@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and ideas (GitHub Discussions)
+    url: https://github.com/SahinurDEV/ForgeData/discussions
+    about: Ask usage questions, share ideas and show what you built with ForgeData.
+  - name: Documentation
+    url: https://sahinurdev.github.io/ForgeData/docs.html
+    about: Getting started, API reference, React guide, CLI reference and Faker.js migration guide.
+  - name: Report a security vulnerability
+    url: https://github.com/SahinurDEV/ForgeData/security/advisories/new
+    about: Please report security issues privately, not as public issues.
