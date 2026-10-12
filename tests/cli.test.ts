@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { parseArgs, runCli, CLI_VERSION, HELP_TEXT, type CliIO } from "../src/cli-core.js";
 
@@ -39,6 +40,15 @@ describe("parseArgs", () => {
     const parsed = parseArgs(["generate", "person.fullName", "extra"]);
     expect(parsed.command).toBe("generate");
     expect(parsed.positionals).toEqual(["person.fullName", "extra"]);
+  });
+});
+
+describe("CLI_VERSION", () => {
+  it("matches the version in package.json", () => {
+    const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8")) as {
+      version: string;
+    };
+    expect(CLI_VERSION).toBe(pkg.version);
   });
 });
 

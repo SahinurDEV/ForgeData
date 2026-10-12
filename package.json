@@ -29,19 +29,34 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     },
     "./react": {
-      "types": "./dist/react/index.d.ts",
-      "import": "./dist/react/index.js",
-      "require": "./dist/react/index.cjs"
+      "import": {
+        "types": "./dist/react/index.d.ts",
+        "default": "./dist/react/index.js"
+      },
+      "require": {
+        "types": "./dist/react/index.d.cts",
+        "default": "./dist/react/index.cjs"
+      }
     },
     "./zod": {
-      "types": "./dist/zod/index.d.ts",
-      "import": "./dist/zod/index.js",
-      "require": "./dist/zod/index.cjs"
+      "import": {
+        "types": "./dist/zod/index.d.ts",
+        "default": "./dist/zod/index.js"
+      },
+      "require": {
+        "types": "./dist/zod/index.d.cts",
+        "default": "./dist/zod/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
@@ -66,7 +81,7 @@
   },
   "packageManager": "npm@10.0.0",
   "scripts": {
-    "build": "tsup && node scripts/chmod-cli.mjs",
+    "build": "node scripts/clean-dist.mjs && tsup && node scripts/chmod-cli.mjs",
     "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -82,7 +97,8 @@
     "prepublishOnly": "npm run build",
     "preflight": "npm run lint && npm run typecheck && npm run test:coverage && npm run build",
     "release:dry-run": "semantic-release --dry-run --no-ci",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "version": "node scripts/sync-version.mjs"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
