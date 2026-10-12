@@ -13,6 +13,9 @@ A production-ready alternative to Faker.js — with React integration and a CLI 
 [![bundle size](https://img.shields.io/bundlephobia/minzip/forgedatajs.svg)](https://bundlephobia.com/package/forgedatajs)
 [![types](https://img.shields.io/badge/types-included-3178c6?logo=typescript&logoColor=white)](./src/index.ts)
 [![license](https://img.shields.io/npm/l/forgedatajs.svg?color=6366f1)](./LICENSE)
+[![contributors](https://img.shields.io/github/contributors/SahinurDEV/ForgeData?color=6366f1)](https://github.com/SahinurDEV/ForgeData/graphs/contributors)
+[![good first issues](https://img.shields.io/github/issues/SahinurDEV/ForgeData/good%20first%20issue?label=good%20first%20issues&color=7057ff)](https://github.com/SahinurDEV/ForgeData/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
 [**Website**](https://sahinurdev.github.io/ForgeData/) &nbsp;·&nbsp;
 [**Try it live**](https://sahinurdev.github.io/ForgeData/#playground) &nbsp;·&nbsp;
@@ -56,6 +59,7 @@ A production-ready alternative to Faker.js — with React integration and a CLI 
 - [Development](#development)
 - [Website](#website)
 - [Publishing](#publishing)
+- [Contributing](#contributing)
 - [License](#license)
 
 ## Install
@@ -71,12 +75,12 @@ import { ForgeData } from "forgedatajs";
 
 const forge = new ForgeData();
 
-forge.person.fullName();          // "Ava Thompson"
-forge.internet.email();           // "ava.thompson@example.com"
-forge.location.country();         // "Canada"
+forge.person.fullName(); // "Ava Thompson"
+forge.internet.email(); // "ava.thompson@example.com"
+forge.location.country(); // "Canada"
 forge.finance.creditCardNumber(); // "4539123456781234"
-forge.phone.number();             // "+1-555-123-4567"
-forge.ai.prompt();                // "Explain quantum computing to a beginner..."
+forge.phone.number(); // "+1-555-123-4567"
+forge.ai.prompt(); // "Explain quantum computing to a beginner..."
 ```
 
 Or use the ready-made default instance for quick scripts:
@@ -93,7 +97,7 @@ console.log(forge.person.fullName());
 const forge = new ForgeData({ seed: 42 });
 forge.person.fullName(); // always the same value for seed 42
 
-forge.seed(42);          // reseed an existing instance
+forge.seed(42); // reseed an existing instance
 ```
 
 Seeds accept a `number` or a `string` (strings are hashed into a seed), so you can seed with something readable like a test name.
@@ -104,8 +108,8 @@ Seeds accept a `number` or a `string` (strings are hashed into a seed), so you c
 const forge = new ForgeData({ locale: "ja" });
 forge.person.fullName(); // Japanese name pool
 
-forge.locale("fr");      // switch at runtime
-forge.locale();          // "fr" — read the current locale
+forge.locale("fr"); // switch at runtime
+forge.locale(); // "fr" — read the current locale
 ```
 
 Built-in locales: `en`, `bn` (Bangla), `hi` (Hindi), `ar` (Arabic), `ja` (Japanese), `fr` (French), `de` (German), `es` (Spanish), `zh` (Chinese).
@@ -142,7 +146,7 @@ forge.custom.pokemon(); // "Pikachu"
 ## Unique values
 
 ```ts
-forge.unique.email();    // never repeats for this ForgeData instance
+forge.unique.email(); // never repeats for this ForgeData instance
 forge.unique.username();
 forge.unique.uuid();
 
@@ -230,7 +234,11 @@ function UserCard() {
     (forge) => ({ name: forge.person.fullName(), email: forge.internet.email() }),
     [],
   );
-  return <div>{user.name} — {user.email}</div>;
+  return (
+    <div>
+      {user.name} — {user.email}
+    </div>
+  );
 }
 ```
 
@@ -250,24 +258,24 @@ Install it globally (`npm install -g forgedatajs`) to just run `forgedata ...` d
 
 ## Modules
 
-| Module      | Examples |
-|-------------|----------|
-| `person`    | `firstName()`, `lastName()`, `fullName()`, `gender()`, `jobTitle()`, `profession()` |
-| `internet`  | `email()`, `username()`, `password()`, `url()`, `domain()`, `ipv4()`, `ipv6()`, `mac()`, `userAgent()`, `jwt()`, `apiKey()`, `jwtSecret()` |
-| `company`   | `name()`, `catchPhrase()`, `logo()` |
-| `finance`   | `currency()`, `amount()`, `creditCardNumber()`, `creditCardCVV()`, `iban()`, `bitcoinAddress()`, `ethereumAddress()`, `cryptoCoin()`, `stockSymbol()` |
-| `location`  | `country()`, `state()`, `city()`, `zipCode()`, `latitude()`, `longitude()`, `timezone()`, `airport()` |
-| `commerce`  | `productName()`, `price()`, `department()`, `isbn()`, `barcode()` |
-| `phone`     | `number()`, `imei()` |
-| `date`      | `past()`, `future()`, `recent()`, `birthdate()`, `month()`, `weekday()`, `between()` |
-| `image`     | `avatar()`, `url()`, `category()`, `dataUri()` |
-| `lorem`     | `word()`, `words()`, `sentence()`, `paragraph()`, `slug()`, `markdown()`, `html()` |
-| `color`     | `hex()`, `rgb()`, `rgba()`, `hsl()`, `cssColorName()`, `tailwindColor()`, `materialColor()`, `svgPattern()` |
-| `vehicle`   | `manufacturer()`, `model()`, `type()`, `vin()` |
-| `animal`    | `type()`, `name()` |
-| `science`   | `unit()`, `chemicalElement()` |
-| `ai`        | `prompt()`, `chatConversation()`, `codeSnippet()`, `sqlQuery()`, `json()`, `markdown()`, `apiResponse()`, `logLine()`, `commitMessage()`, `issueTitle()`, `prDescription()` |
-| `misc`      | `emoji()`, `hashtag()`, `programmingLanguage()`, `githubUsername()`, `gitCommitHash()`, `semver()`, `dockerImageName()`, `npmPackageName()`, `otp()`, `licenseKey()`, `qrData()`, `movie()`, `book()`, `music()`, `food()`, `holiday()`, `university()` |
+| Module     | Examples                                                                                                                                                                                                                                                |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `person`   | `firstName()`, `lastName()`, `fullName()`, `gender()`, `jobTitle()`, `profession()`                                                                                                                                                                     |
+| `internet` | `email()`, `username()`, `password()`, `url()`, `domain()`, `ipv4()`, `ipv6()`, `mac()`, `userAgent()`, `jwt()`, `apiKey()`, `jwtSecret()`                                                                                                              |
+| `company`  | `name()`, `catchPhrase()`, `logo()`                                                                                                                                                                                                                     |
+| `finance`  | `currency()`, `amount()`, `creditCardNumber()`, `creditCardCVV()`, `iban()`, `bitcoinAddress()`, `ethereumAddress()`, `cryptoCoin()`, `stockSymbol()`                                                                                                   |
+| `location` | `country()`, `state()`, `city()`, `zipCode()`, `latitude()`, `longitude()`, `timezone()`, `airport()`                                                                                                                                                   |
+| `commerce` | `productName()`, `price()`, `department()`, `isbn()`, `barcode()`                                                                                                                                                                                       |
+| `phone`    | `number()`, `imei()`                                                                                                                                                                                                                                    |
+| `date`     | `past()`, `future()`, `recent()`, `birthdate()`, `month()`, `weekday()`, `between()`                                                                                                                                                                    |
+| `image`    | `avatar()`, `url()`, `category()`, `dataUri()`                                                                                                                                                                                                          |
+| `lorem`    | `word()`, `words()`, `sentence()`, `paragraph()`, `slug()`, `markdown()`, `html()`                                                                                                                                                                      |
+| `color`    | `hex()`, `rgb()`, `rgba()`, `hsl()`, `cssColorName()`, `tailwindColor()`, `materialColor()`, `svgPattern()`                                                                                                                                             |
+| `vehicle`  | `manufacturer()`, `model()`, `type()`, `vin()`                                                                                                                                                                                                          |
+| `animal`   | `type()`, `name()`                                                                                                                                                                                                                                      |
+| `science`  | `unit()`, `chemicalElement()`                                                                                                                                                                                                                           |
+| `ai`       | `prompt()`, `chatConversation()`, `codeSnippet()`, `sqlQuery()`, `json()`, `markdown()`, `apiResponse()`, `logLine()`, `commitMessage()`, `issueTitle()`, `prDescription()`                                                                             |
+| `misc`     | `emoji()`, `hashtag()`, `programmingLanguage()`, `githubUsername()`, `gitCommitHash()`, `semver()`, `dockerImageName()`, `npmPackageName()`, `otp()`, `licenseKey()`, `qrData()`, `movie()`, `book()`, `music()`, `food()`, `holiday()`, `university()` |
 
 Run `forge.listGenerators().length` to see the exact live count (100+).
 
@@ -291,7 +299,7 @@ npm run bench            # micro-benchmark, compares against faker if installed
 npm run cli -- list      # run the CLI from source during development
 ```
 
-See the [documentation site](https://sahinurdev.github.io/ForgeData/docs.html) (built from `docs/docs.html`) for the getting-started guide, full API reference, React guide, CLI reference, migration guide from Faker.js, and contributing guide. See [examples/](./examples) for runnable Node, browser, React, and CLI samples.
+See the [documentation site](https://sahinurdev.github.io/ForgeData/docs.html) (built from `docs/docs.html`) for the getting-started guide, full API reference, React guide, CLI reference, migration guide from Faker.js, and contributing guide. See [CONTRIBUTING.md](./CONTRIBUTING.md) before opening a pull request. See [examples/](./examples) for runnable Node, browser, React, and CLI samples.
 
 ## Website
 
@@ -308,18 +316,29 @@ Deployed straight from the repo — no CI needed: **Settings → Pages → Sourc
 
 ## Publishing
 
-This repo is fully set up to publish, but nothing publishes itself:
+Releases are fully automated. On every push to `main`, `.github/workflows/release.yml` runs [semantic-release](https://semantic-release.gitbook.io/): it derives the next version from [Conventional Commits](https://www.conventionalcommits.org/) (`feat:` → minor, `fix:`/`perf:` → patch, `BREAKING CHANGE` → major; `docs:`/`chore:`/`test:` etc. don't release), updates `CHANGELOG.md`, tags, creates a GitHub release and publishes `forgedatajs` to npm via [Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC, with provenance) — no `NPM_TOKEN` secret is needed. It relies on a one-time trusted publisher for `forgedatajs` on npmjs.com (GitHub Actions, `SahinurDEV` / `ForgeData`, workflow `release.yml`).
+
+To check what the next release would be locally:
 
 ```bash
-npm run preflight   # lint + typecheck + 100%-coverage tests + build
-npm login
-npm publish --access public
+npm run preflight         # lint + typecheck + 100%-coverage tests + build
+npm run release:dry-run   # semantic-release --dry-run --no-ci
 ```
 
-`scripts/publish.sh` wraps that sequence with a confirmation prompt, and `RELEASE_NOTES.md` has a ready-to-paste description for the GitHub Release / npm announcement.
+A manual fallback (`npm login && npm publish --access public`, wrapped with a confirmation prompt in `scripts/publish.sh`) is still available for maintainers.
 
-For every release after the first, `.github/workflows/release.yml` runs [semantic-release](https://semantic-release.gitbook.io/) on pushes to `main` — it derives the next version from [Conventional Commits](https://www.conventionalcommits.org/), updates `CHANGELOG.md`, tags, and publishes to npm via [Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC, with provenance) — no `NPM_TOKEN` secret is needed. It requires a one-time trusted publisher for `forgedatajs` on npmjs.com (GitHub Actions, `SahinurDEV` / `ForgeData`, workflow `release.yml`); see the docs site's [Contributing](https://sahinurdev.github.io/ForgeData/docs.html#contributing) section.
+## Contributing
+
+Contributions of all sizes are welcome — new generators, locales, bug fixes, docs and tooling.
+
+- Read the [contributing guide](./CONTRIBUTING.md) for setup, scripts, test/coverage expectations and the PR process.
+- Looking for somewhere to start? Check the [good first issues](https://github.com/SahinurDEV/ForgeData/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) and [help wanted](https://github.com/SahinurDEV/ForgeData/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22) issues.
+- Questions and ideas go to [GitHub Discussions](https://github.com/SahinurDEV/ForgeData/discussions); bugs and feature requests to [issues](https://github.com/SahinurDEV/ForgeData/issues/new/choose).
+- Commit messages / PR titles follow [Conventional Commits](https://www.conventionalcommits.org/) because they drive automated releases.
+- Please follow the [Code of Conduct](./CODE_OF_CONDUCT.md), and report security issues privately as described in [SECURITY.md](./SECURITY.md).
+
+Thanks to [everyone who has contributed](https://github.com/SahinurDEV/ForgeData/graphs/contributors)!
 
 ## License
 
-MIT
+[MIT](./LICENSE) © 2026 Sahinur Islam and ForgeData contributors
