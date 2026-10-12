@@ -1,10 +1,11 @@
 import { ForgeData } from "./ForgeData.js";
 
 // Kept as a plain constant rather than read from package.json at runtime:
-// JSON import assertions are still inconsistent across Node/Bun/Deno/bundlers,
-// and this is purely cosmetic output for `--version`. Bump it alongside the
-// version field in package.json on release.
-export const CLI_VERSION = "0.2.0";
+// JSON import assertions are still inconsistent across Node/Bun/Deno/bundlers.
+// It is rewritten automatically by scripts/sync-version.mjs (the npm `version`
+// lifecycle script, run by semantic-release when it bumps package.json), and
+// tests/cli.test.ts asserts it matches package.json.
+export const CLI_VERSION = "0.2.1";
 
 export interface ParsedArgs {
   command?: string;
